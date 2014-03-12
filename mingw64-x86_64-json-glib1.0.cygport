@@ -3,7 +3,7 @@ ORIG_PN="json-glib"
 inherit cross gnome2
 
 NAME="mingw64-x86_64-json-glib1.0"
-VERSION=0.16.0
+VERSION=0.16.2
 RELEASE=1
 CATEGORY="Devel"
 SUMMARY="GObject JSON parser library for Win64 toolchain"
@@ -11,5 +11,7 @@ DESCRIPTION="JSON-GLib is a GObject library providing serialization and
 deserialization support for the JavaScript Object Notation (JSON) format
 described by RFC 4627."
 HOMEPAGE="http://live.gnome.org/JsonGlib"
+
+CYGCONF_ARGS="--disable-static"
 
 DIFF_EXCLUDES=".gitignore"
