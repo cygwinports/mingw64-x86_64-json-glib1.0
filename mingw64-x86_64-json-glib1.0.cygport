@@ -3,7 +3,7 @@ ORIG_PN="json-glib"
 inherit cross gnome2
 
 NAME="mingw64-x86_64-json-glib1.0"
-VERSION=1.0.2
+VERSION=1.0.4
 RELEASE=1
 CATEGORY="Devel"
 SUMMARY="GObject JSON parser library for Win64 toolchain"
@@ -13,5 +13,6 @@ described by RFC 4627."
 HOMEPAGE="http://live.gnome.org/JsonGlib"
 
 CYGCONF_ARGS="--disable-static"
+MAKEOPTS+=" bin_PROGRAMS= man_MANS= "
 
 DIFF_EXCLUDES=".gitignore"
