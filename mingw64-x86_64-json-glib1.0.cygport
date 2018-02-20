@@ -1,9 +1,9 @@
 CROSS_HOST="x86_64-w64-mingw32"
 ORIG_PN="json-glib"
-inherit cross gnome2
+inherit cross gnome.org meson
 
 NAME="mingw64-x86_64-json-glib1.0"
-VERSION=1.2.6
+VERSION=1.4.2
 RELEASE=1
 CATEGORY="Devel"
 SUMMARY="GObject JSON parser library for Win64 toolchain"
@@ -12,7 +12,14 @@ deserialization support for the JavaScript Object Notation (JSON) format
 described by RFC 4627."
 HOMEPAGE="http://live.gnome.org/JsonGlib"
 
-CYGCONF_ARGS="--disable-static"
-MAKEOPTS+=" bin_PROGRAMS= man_MANS= "
+CYGMESON_ARGS="-Dintrospection=false"
 
 DIFF_EXCLUDES=".gitignore"
+
+src_install() {
+	cd ${S}
+	meson_install
+
+	rm -f ${D}${CROSS_BINDIR}/*.exe
+	find ${D}${CROSS_PREFIX}/*/installed-tests -delete
+}
